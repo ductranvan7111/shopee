@@ -1,0 +1,138 @@
+
+.app__slider {
+    margin-top: var(--header-height);
+}
+.slider__show {
+    position: relative;
+    overflow: hidden;
+
+}
+.slider-list {
+    display: flex;
+    list-style: none;
+    padding-left: 0;
+    position: relative;
+    /* transform: translateX(); */
+    transition: transform 0.5s ease-in-out;
+    will-change: transition;
+}
+.slider-item {
+    min-width: 100%;
+}
+.slider-item:hover {
+    cursor: pointer;
+}
+.slider-img {
+    width: 100%;
+}
+.btn-slider {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.2);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: 15px 10px; 
+    font-size: 1.6rem;
+    border-radius: 2px;
+    transition: 0.3s;
+    opacity: 0;
+    transition: opacity 0.3s linear;
+}
+.btn-slider:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.slider__show:hover .btn-slider,
+.mall-section-product__slider:hover .btn-slider {
+    opacity: 1;
+}
+
+.prev-btn,
+.mall-prev-btn {
+    left: 0;
+}
+.next-btn,
+.mall-next-btn {
+    right: 0;
+}
+.dot-list,
+.mall-dot-list {
+    position: absolute;
+    display: flex;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    gap: 5px;
+}
+.dot-item,
+.mall-dot-item {
+    width: 10px;
+    height: 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+}
+.dot-item--active,
+.mall-dot-item--active {
+    background-color: var(--primary-color);
+}
+/* Banner */
+.banner-list {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    padding-left: 0;
+    list-style: none;
+    margin-left: 10px;
+    gap: 1px;
+}
+.banner-item {
+    text-decoration: none;
+}
+.banner-link {
+    display: block;
+    text-decoration: none;
+}
+.banner-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Menu */
+.menu-list {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding-left: 0;
+    margin-top: 15px;
+    justify-content: center
+    
+}
+.menu-item {
+    margin-right: 10px;
+    margin-bottom: 10px;
+    transition: transform ease-in 0.1s;
+    will-change: transform;
+}
+.menu-item:hover {
+    transform: translateY(-2px);
+}
+.menu-link {
+    text-decoration: none;
+    display: block;
+    text-align: center;
+}
+.menu-img {
+    height: 45px;
+    width: 45px;
+    object-fit: cover;
+}
+.menu-desc {
+    width: 150px;
+    font-size: 1.3rem;
+    margin-top: 10px;
+    color: var(--text-color);
+    text-align: center;
+}
