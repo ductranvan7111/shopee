@@ -317,6 +317,14 @@
 .header__notify-desc {
     color: #999999;
     font-size: 1.2rem;
+    
+}
+.header__notify-name,
+.header__notify-desc {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
 }
 /* .header__notify-footer {
 

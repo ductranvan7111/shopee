@@ -1,3 +1,32 @@
+// Xử lý khi xoá sản phẩm giỏ hàng
+document.addEventListener("DOMContentLoaded", function() {
+    const cartNotice = document.querySelector('.header__cart-notice');
+    const cartItems = document.querySelector('.header__cart-list-item');
+    const cartList = document.querySelector('.header__cart-list');
+
+    // Update the cart notice count
+    function updateCartNotice() {
+        const itemCount = cartItems.querySelectorAll('.header__cart-item').length;
+        cartNotice.textContent = itemCount;
+        if (itemCount === 0) {
+            cartList.classList.add('header__cart-list--no-cart');
+        } else {
+            cartList.classList.remove('header__cart-list--no-cart');
+        }
+    }
+
+    // Event listener for remove buttons
+    cartItems.addEventListener('click', function(e) {
+        if (e.target.classList.contains('header__cart-item-remove')) {
+            const cartItem = e.target.closest('.header__cart-item');
+            cartItems.removeChild(cartItem);
+            updateCartNotice();
+        }
+    });
+
+    updateCartNotice();
+});
+// Slider
 document.addEventListener('DOMContentLoaded', function() {
 
     function createSlider(sliderSelector, sliderItemSelector, prevBtnSelector, nextBtnSelector, dotListSelector) {
@@ -48,6 +77,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     
         dotList.addEventListener('click', function(e) {
+            // console.log(e.target.classList);
             if (e.target.classList.contains('dot-item')) {
                 clearInterval(handleEventChangeSlide);
                 offset = parseInt(e.target.classList[1].split('-')[2]);
@@ -141,14 +171,14 @@ document.addEventListener('DOMContentLoaded', function() {
         const headingRect = suggestionHeading.getBoundingClientRect();
         // console.log(rect.top, rect.bottom, headerHeight, headingRect.height)
         
-        if (rect.top <= headerHeight && rect.bottom >= headingRect.height + headerHeight) {
+        if (rect.top <= headerHeight && rect.bottom >= headingRect.height + headerHeight) { //Kiểm tra xem phần tử cha có đang cuộn đến vị trí mà tiêu đề cần trở thành "sticky" không.
             suggestionHeading.classList.add('sticky');
             suggestionHeading.classList.remove('sticky-hidden');
         } else {
             suggestionHeading.classList.remove('sticky');
         }
         
-        if (rect.bottom < headingRect.height + headerHeight) {
+        if (rect.bottom < headingRect.height + headerHeight) { //Kiểm tra xem phần tử cha có cuộn ra khỏi vùng hiển thị không.
             suggestionHeading.classList.add('sticky-hidden');
         } else {
             suggestionHeading.classList.remove('sticky-hidden');
@@ -160,34 +190,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     checkSticky();
 });
-// Xử lý khi xoá sản phẩm giỏ hàng
-document.addEventListener("DOMContentLoaded", function() {
-    const cartNotice = document.querySelector('.header__cart-notice');
-    const cartItems = document.querySelector('.header__cart-list-item');
-    const cartList = document.querySelector('.header__cart-list');
 
-    // Update the cart notice count
-    function updateCartNotice() {
-        const itemCount = cartItems.querySelectorAll('.header__cart-item').length;
-        cartNotice.textContent = itemCount;
-        if (itemCount === 0) {
-            cartList.classList.add('header__cart-list--no-cart');
-        } else {
-            cartList.classList.remove('header__cart-list--no-cart');
-        }
-    }
-
-    // Event listener for remove buttons
-    cartItems.addEventListener('click', function(e) {
-        if (e.target.classList.contains('header__cart-item-remove')) {
-            const cartItem = e.target.closest('.header__cart-item');
-            cartItems.removeChild(cartItem);
-            updateCartNotice();
-        }
-    });
-
-    updateCartNotice();
-});
 
 // document.getElementById('logout').addEventListener('click', function(e) {
 //     e.preventDefault(); // Ngăn chặn hành động mặc định của thẻ <a>
